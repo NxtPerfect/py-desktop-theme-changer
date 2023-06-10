@@ -1,4 +1,5 @@
 import config
+import change
 
 '''Config in a file
 read wallpaper-dark
@@ -30,6 +31,38 @@ def run():
             './config.toml', config.read_current_theme('./config.toml'))
     except:
         print('Couldn\'t write to file')
+
+    print(theme['wallpaper'])
+
+    try:
+        change.change_wallpaper(theme['wallpaper'])
+    except:
+        print('Couldn\'t set wallpaper')
+
+    try:
+        change.change_pointer(theme['pointer'])
+    except:
+        print('Couldn\'t change pointer')
+
+    try:
+        change.change_icons_gtk(theme['icons'])
+    except:
+        print('Couldn\'t change icons gtk')
+
+    try:
+        change.change_icons_qt(theme['icons'])
+    except:
+        print('Couldn\'t change icons qt')
+
+    try:
+        change.change_theme_gtk(theme['theme-gtk'])
+    except:
+        print('Couldn\'t change theme gtk')
+
+    try:
+        change.change_theme_qt(theme['theme-qt'])
+    except:
+        print('Couldn\'t change theme qt')
 
 
 if __name__ == "__main__":

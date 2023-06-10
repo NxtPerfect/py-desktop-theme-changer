@@ -36,8 +36,10 @@ def read_current_theme(file):
 def write_current_theme(file, theme):
     if theme == 'dark_theme':
         theme = 'light_theme'
-    else:
+    elif theme == 'light_theme':
         theme = 'dark_theme'
+    else:
+        return -1
     print(theme)
 
     try:
