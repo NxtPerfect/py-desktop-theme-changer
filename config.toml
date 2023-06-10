@@ -1,0 +1,16 @@
+[runtime]
+current_theme = "dark_theme"
+
+[light_theme]
+wallpaper = 1
+theme-gtk = 1
+theme-qt = 1
+cursor = 1
+icon = 1
+
+[dark_theme]
+wallpaper = 0
+theme-gtk = 0
+theme-qt = 0
+cursor = 0
+icon = 0
