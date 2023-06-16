@@ -1,4 +1,5 @@
 import config
+import backup
 import change
 
 '''Config in a file
@@ -18,8 +19,21 @@ do not write errors already in the modules itself, there\'s no need'''
 DEFAULT_PATH = '$XDG_CONFIG_HOME/theme-switcher/config.toml'
 
 
-def run():
-    theme = 'yes'
+def debug():
+    backup
+    # try:
+    #     backup.create_backup()
+    # except:
+    #     print('Couldn\'t create backup')
+    #     exit()
+
+    # try:
+    #     backup.delete_backup_files()
+    # except:
+    #     print('Couldn\'t remove backup')
+    #     exit()
+
+    theme = 'light'
     try:
         theme = config.read_themes_configuration('./config.toml')
     except:
@@ -36,34 +50,34 @@ def run():
 
     try:
         change.change_wallpaper(theme['wallpaper'])
-    except:
-        print('Couldn\'t set wallpaper')
+    except Exception as e:
+        print(f'Couldn\'t set wallpaper, Error {e}')
 
     try:
         change.change_pointer(theme['pointer'])
-    except:
-        print('Couldn\'t change pointer')
+    except Exception as e:
+        print(f'Couldn\'t change pointer, Error {e}')
 
     try:
         change.change_icons_gtk(theme['icons'])
-    except:
-        print('Couldn\'t change icons gtk')
+    except Exception as e:
+        print(f'Couldn\'t change icons gtk, Error {e}')
 
     try:
         change.change_icons_qt(theme['icons'])
-    except:
-        print('Couldn\'t change icons qt')
+    except Exception as e:
+        print(f'Couldn\'t change icons qt, Error {e}')
 
     try:
         change.change_theme_gtk(theme['theme-gtk'])
-    except:
-        print('Couldn\'t change theme gtk')
+    except Exception as e:
+        print(f'Couldn\'t change theme gtk, Error {e}')
 
     try:
         change.change_theme_qt(theme['theme-qt'])
-    except:
-        print('Couldn\'t change theme qt')
+    except Exception as e:
+        print(f'Couldn\'t change theme qt, Error {e}')
 
 
 if __name__ == "__main__":
-    run()
+    debug()

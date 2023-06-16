@@ -2,15 +2,15 @@
 current_theme = "light_theme"
 
 [light_theme]
-wallpaper = 1
-theme-gtk = 1
-theme-qt = 1
-pointer = 1
-icons = 1
+wallpaper = "/home/nxtperfect/Pictures/anime-girl.png"
+theme-gtk = "Adwaita"
+theme-qt = "Adwaita"
+pointer = "Bibata-Modern-Ice"
+icons = "Adwaita"
 
 [dark_theme]
-wallpaper = 0
-theme-gtk = 0
-theme-qt = 0
-pointer = 0
-icons = 0
+wallpaper = "/home/nxtperfect/Pictures/PFP34.jpg"
+theme-gtk = "Dracula-standard-buttons"
+theme-qt = "Adwaita-Dark"
+pointer = "Bibata-Modern-Classic"
+icons = "BigSur-black-dark"
