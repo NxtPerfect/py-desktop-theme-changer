@@ -2,14 +2,14 @@
 current_theme = "light_theme"
 
 [light_theme]
-wallpaper = "/home/nxtperfect/Pictures/anime-girl.png"
+wallpaper = "~/Pictures/anime-girl.png"
 theme-gtk = "Adwaita"
 theme-qt = "Adwaita"
 pointer = "Bibata-Modern-Ice"
 icons = "Adwaita"
 
 [dark_theme]
-wallpaper = "/home/nxtperfect/Pictures/Tokyo-Ghoul-Wallpaper-For-PC.jpg"
+wallpaper = "~/Pictures/Tokyo-Ghoul-Wallpaper-For-PC.jpg"
 theme-gtk = "Dracula-standard-buttons"
 theme-qt = "Adwaita-Dark"
 pointer = "Bibata-Modern-Classic"
