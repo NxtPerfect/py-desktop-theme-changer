@@ -29,10 +29,9 @@ def change_pointer(pointer):
             data = f.read()
         with open(ICONS_CONFIG_PATH_INDEX, 'w') as f:
             print(data)
-            new_data = re.sub('Inherits=/.+?(?=\n)/',
-                              f'Inherits={pointer}', data, 1)
-            f.write(new_data)
-            print(new_data)
+            data = re.sub('Inherits=.+?(?=\n)',
+                          f'Inherits={pointer}', data, 1)
+            f.write(data)
     except FileNotFoundError:
         return -1
 
@@ -40,7 +39,7 @@ def change_pointer(pointer):
         with open(CONFIG_PATH_GTK_3, 'r+') as f:
             data = f.read()
         with open(CONFIG_PATH_GTK_3, 'w') as f:
-            data = re.sub('gtk-cursor-theme-name=/.+?(?=\n)/',
+            data = re.sub('gtk-cursor-theme-name=.+?(?=\n)',
                           f'gtk-cursor-theme-name={pointer}', data)
             f.write(data)
     except FileNotFoundError:
@@ -54,7 +53,7 @@ def change_icons_gtk(icons_gtk):
         with open(CONFIG_PATH_GTK_3, 'r+') as f:
             data = f.read()
         with open(CONFIG_PATH_GTK_3, 'w') as f:
-            data = re.sub('gtk-icon-theme-name=/.+?(?=\n)/',
+            data = re.sub('gtk-icon-theme-name=.+?(?=\n)',
                           f'gtk-icon-theme-name={icons_gtk}', data)
             f.write(data)
     except FileNotFoundError:
@@ -68,7 +67,7 @@ def change_icons_qt(icons_qt):
         with open(CONFIG_PATH_QT5, 'r+') as f:
             data = f.read()
         with open(CONFIG_PATH_QT5, 'w') as f:
-            data = re.sub('icon_theme=/.+?(?=\n)/',
+            data = re.sub('icon_theme=.+?(?=\n)',
                           f'icon_theme={icons_qt}', data)
             f.write(data)
     except FileNotFoundError:
@@ -82,7 +81,7 @@ def change_theme_gtk(theme_gtk):
         with open(CONFIG_PATH_GTK_3, 'r+') as f:
             data = f.read()
         with open(CONFIG_PATH_GTK_3, 'w') as f:
-            data = re.sub('gtk-theme-name=/.+?(?=\n)/',
+            data = re.sub('gtk-theme-name=.+?(?=\n)',
                           f'gtk-theme-name={theme_gtk}', data)
             f.write(data)
     except FileNotFoundError:
@@ -96,7 +95,7 @@ def change_theme_qt(theme_qt):
         with open(CONFIG_PATH_QT5, 'r+') as f:
             data = f.read()
         with open(CONFIG_PATH_QT5, 'w') as f:
-            data = re.sub('style=/.+?(?=\n)/', f'style={theme_qt}', data)
+            data = re.sub('style=.+?(?=\n)', f'style={theme_qt}', data)
             f.write(data)
     except FileNotFoundError:
         return -1
