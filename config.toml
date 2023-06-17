@@ -2,7 +2,7 @@
 current_theme = "light_theme"
 
 [light_theme]
-wallpaper = "~/Pictures/anime-girl.png"
+wallpaper = "~/Pictures/PFP45.jpg"
 theme-gtk = "Adwaita"
 theme-qt = "Adwaita"
 pointer = "Bibata-Modern-Ice"
