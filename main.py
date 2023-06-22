@@ -78,6 +78,13 @@ def debug():
     except Exception as e:
         print(f'Couldn\'t change theme qt, Error {e}')
 
+    try:
+        change.change_theme_gtk_live(theme['theme-gtk'])
+    except Exception as e:
+        print(f'Couldn\'t change theme gtk LIVE, Error {e}')
+
+    # os.system('bspc wm -r')
+
 
 if __name__ == "__main__":
     debug()

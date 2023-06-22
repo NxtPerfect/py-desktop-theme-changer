@@ -7,6 +7,15 @@ ICONS_CONFIG_PATH_INDEX = HOME + '/.icons/default/index.theme'
 CONFIG_PATH_GTK_2 = HOME + '/.gtkrc-2.0'
 CONFIG_PATH_GTK_3 = HOME + '/.config/gtk-3.0/settings.ini'
 CONFIG_PATH_QT5 = HOME + '/.config/qt5ct/qt5ct.conf'
+CONFIG_PATH_XSETTINGS = HOME + '/.xsettingsd'
+
+#  On a X11 wm you need a xsettings daemon running, every DE comes with one, you should install xsettingsd as the lightweight wm agnostic one.
+#
+# ~/.config/xsettingsd/xsettingsd.conf
+#
+#     Net/ThemeName "Adwaita"
+#
+# Make this conf file, launch the daemon and every gtk app will listen to it, if you want to live reload change Adwaita to a different theme and force reload of the config with killall -HUP xsettingsd
 
 
 def change_wallpaper(wallpaper):
@@ -16,9 +25,12 @@ def change_wallpaper(wallpaper):
         print('Wrong wallpaper path')
         return e
 
-    command = 'feh --bg-fill ' + wallpaper
-    os.system(command)
-    return 0
+    try:
+        command = 'feh --bg-fill ' + wallpaper
+        os.system(command)
+        return 0
+    except Exception as e:
+        return e
 
 
 def change_pointer(pointer):
@@ -99,3 +111,26 @@ def change_theme_qt(theme_qt):
             f.write(data)
     except FileNotFoundError:
         return -1
+
+
+def change_theme_gtk_live(theme_gtk):
+    try:
+        with open(CONFIG_PATH_XSETTINGS, 'r+') as f:
+            data = f.read()
+        with open(CONFIG_PATH_XSETTINGS, 'w') as f:
+            data = re.sub('Net/ThemeName+.+?(?=\n)',
+                          f'Net/ThemeName \"{theme_gtk}\"', data)
+            f.write(data)
+    except FileNotFoundError:
+        return -1
+
+    try:
+        command = 'killall -HUP xsettingsd'
+        os.system(command)
+        return 0
+    except Exception as e:
+        return e
+
+
+def change_polybar_theme(theme):
+    pass
