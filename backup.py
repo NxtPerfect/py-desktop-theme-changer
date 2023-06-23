@@ -7,8 +7,9 @@ ICONS_CONFIG_PATH_INDEX = HOME + '/.icons/default/index.theme'
 CONFIG_PATH_GTK_2 = HOME + '/.gtkrc-2.0'
 CONFIG_PATH_GTK_3 = HOME + '/.config/gtk-3.0/settings.ini'
 CONFIG_PATH_QT5 = HOME + '/.config/qt5ct/qt5ct.conf'
+CONFIG_PATH_XSETTINGS = HOME + '/.xsettingsd'
 FILES = [ICONS_CONFIG_PATH_INDEX, CONFIG_PATH_GTK_2,
-         CONFIG_PATH_GTK_3, CONFIG_PATH_QT5]
+         CONFIG_PATH_GTK_3, CONFIG_PATH_QT5, CONFIG_PATH_XSETTINGS]
 
 
 def create_backup():
@@ -17,14 +18,12 @@ def create_backup():
             print(f'{backup}')
             with open(backup, 'r') as f:
                 data = f.read()
-                print(f'Read file {backup}')
             path = backup + ".bak"
             with open(path, 'w') as f:
                 f.write(data)
-                print(f'Saving file {path}')
-    except FileNotFoundError:
+    except Exception as e:
         print('Failed to create backup')
-        return -1
+        return e
 
 
 def delete_backup_files():
@@ -36,9 +35,9 @@ def delete_backup_files():
                 print(f'Successfully removed {backup}')
             else:
                 print(f"The file {backup} does not exist")
-    except FileNotFoundError:
+    except Exception as e:
         print('Failed to remove backup')
-        return -1
+        return e
 
 
 def restore_backup():
@@ -49,6 +48,6 @@ def restore_backup():
             path = backup.removesuffix('.bak')
             with open(path, 'w') as f:
                 f.write(data)
-    except FileNotFoundError:
+    except Exception as e:
         print('Failed to restore backup')
-        return -1
+        return e

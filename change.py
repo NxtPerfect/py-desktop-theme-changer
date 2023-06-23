@@ -9,14 +9,6 @@ CONFIG_PATH_GTK_3 = HOME + '/.config/gtk-3.0/settings.ini'
 CONFIG_PATH_QT5 = HOME + '/.config/qt5ct/qt5ct.conf'
 CONFIG_PATH_XSETTINGS = HOME + '/.xsettingsd'
 
-#  On a X11 wm you need a xsettings daemon running, every DE comes with one, you should install xsettingsd as the lightweight wm agnostic one.
-#
-# ~/.config/xsettingsd/xsettingsd.conf
-#
-#     Net/ThemeName "Adwaita"
-#
-# Make this conf file, launch the daemon and every gtk app will listen to it, if you want to live reload change Adwaita to a different theme and force reload of the config with killall -HUP xsettingsd
-
 
 def change_wallpaper(wallpaper):
     try:
@@ -34,18 +26,15 @@ def change_wallpaper(wallpaper):
 
 
 def change_pointer(pointer):
-    # print('Changed pointer')
-    # return 'Success'
     try:
         with open(ICONS_CONFIG_PATH_INDEX, 'r') as f:
             data = f.read()
         with open(ICONS_CONFIG_PATH_INDEX, 'w') as f:
-            print(data)
             data = re.sub('Inherits=.+?(?=\n)',
                           f'Inherits={pointer}', data, 1)
             f.write(data)
-    except FileNotFoundError:
-        return -1
+    except Exception as e:
+        return e
 
     try:
         with open(CONFIG_PATH_GTK_3, 'r+') as f:
@@ -54,41 +43,33 @@ def change_pointer(pointer):
             data = re.sub('gtk-cursor-theme-name=.+?(?=\n)',
                           f'gtk-cursor-theme-name={pointer}', data)
             f.write(data)
-    except FileNotFoundError:
-        return -1
+    except Exception as e:
+        return e
 
 
-def change_icons_gtk(icons_gtk):
-    # print('Changed icons gtk')
-    # return 'Success'
-    try:
-        with open(CONFIG_PATH_GTK_3, 'r+') as f:
-            data = f.read()
-        with open(CONFIG_PATH_GTK_3, 'w') as f:
-            data = re.sub('gtk-icon-theme-name=.+?(?=\n)',
-                          f'gtk-icon-theme-name={icons_gtk}', data)
-            f.write(data)
-    except FileNotFoundError:
-        return -1
-
-
-def change_icons_qt(icons_qt):
-    # print('Changed icons qt')
-    # return 'Success'
+def change_icons(icons):
     try:
         with open(CONFIG_PATH_QT5, 'r+') as f:
             data = f.read()
         with open(CONFIG_PATH_QT5, 'w') as f:
             data = re.sub('icon_theme=.+?(?=\n)',
-                          f'icon_theme={icons_qt}', data)
+                          f'icon_theme={icons}', data)
             f.write(data)
-    except FileNotFoundError:
-        return -1
+    except Exception as e:
+        return e
+
+    try:
+        with open(CONFIG_PATH_GTK_3, 'r+') as f:
+            data = f.read()
+        with open(CONFIG_PATH_GTK_3, 'w') as f:
+            data = re.sub('gtk-icon-theme-name=.+?(?=\n)',
+                          f'gtk-icon-theme-name={icons}', data)
+            f.write(data)
+    except Exception as e:
+        return e
 
 
 def change_theme_gtk(theme_gtk):
-    # print('Changed theme gtk')
-    # return 'Success'
     try:
         with open(CONFIG_PATH_GTK_3, 'r+') as f:
             data = f.read()
@@ -96,33 +77,35 @@ def change_theme_gtk(theme_gtk):
             data = re.sub('gtk-theme-name=.+?(?=\n)',
                           f'gtk-theme-name={theme_gtk}', data)
             f.write(data)
-    except FileNotFoundError:
-        return -1
+    except Exception as e:
+        return e
 
 
 def change_theme_qt(theme_qt):
-    # print('Changed theme qt')
-    # return 'Success'
     try:
         with open(CONFIG_PATH_QT5, 'r+') as f:
             data = f.read()
         with open(CONFIG_PATH_QT5, 'w') as f:
             data = re.sub('style=.+?(?=\n)', f'style={theme_qt}', data)
             f.write(data)
-    except FileNotFoundError:
-        return -1
+    except Exception as e:
+        return e
 
 
-def change_theme_gtk_live(theme_gtk):
+def change_live(theme_gtk, icons, pointer):
     try:
         with open(CONFIG_PATH_XSETTINGS, 'r+') as f:
             data = f.read()
         with open(CONFIG_PATH_XSETTINGS, 'w') as f:
             data = re.sub('Net/ThemeName+.+?(?=\n)',
                           f'Net/ThemeName \"{theme_gtk}\"', data)
+            data = re.sub('Net/IconThemeName+.+?(?=\n)',
+                          f'Net/IconThemeName \"{icons}\"', data)
+            data = re.sub('Gtk/CursorThemeName+.+?(?=\n)',
+                          f'Gtk/CursorThemeName \"{pointer}\"', data)
             f.write(data)
-    except FileNotFoundError:
-        return -1
+    except Exception as e:
+        return e
 
     try:
         command = 'killall -HUP xsettingsd'
@@ -130,7 +113,3 @@ def change_theme_gtk_live(theme_gtk):
         return 0
     except Exception as e:
         return e
-
-
-def change_polybar_theme(theme):
-    pass

@@ -20,6 +20,7 @@ DEFAULT_PATH = '$XDG_CONFIG_HOME/theme-switcher/config.toml'
 
 
 def debug():
+    # TODO: only recreate backup if deleted
     backup
     # try:
     #     backup.create_backup()
@@ -46,8 +47,6 @@ def debug():
     except:
         print('Couldn\'t write to file')
 
-    print(theme['wallpaper'])
-
     try:
         change.change_wallpaper(theme['wallpaper'])
     except Exception as e:
@@ -59,14 +58,9 @@ def debug():
         print(f'Couldn\'t change pointer, Error {e}')
 
     try:
-        change.change_icons_gtk(theme['icons'])
+        change.change_icons(theme['icons'])
     except Exception as e:
-        print(f'Couldn\'t change icons gtk, Error {e}')
-
-    try:
-        change.change_icons_qt(theme['icons'])
-    except Exception as e:
-        print(f'Couldn\'t change icons qt, Error {e}')
+        print(f'Couldn\'t change icons, Error {e}')
 
     try:
         change.change_theme_gtk(theme['theme-gtk'])
@@ -79,11 +73,16 @@ def debug():
         print(f'Couldn\'t change theme qt, Error {e}')
 
     try:
-        change.change_theme_gtk_live(theme['theme-gtk'])
+        change.change_live(theme['theme-gtk'],
+                           theme['icons'], theme['pointer'])
     except Exception as e:
         print(f'Couldn\'t change theme gtk LIVE, Error {e}')
 
+    # TODO: Function that reads window manager, and restarts the display
+
     # os.system('bspc wm -r')
+
+    return 'Successfully changed theme to {theme[\'current_theme\']}'
 
 
 if __name__ == "__main__":

@@ -1,8 +1,4 @@
 import toml
-try:
-    import tomllib
-except ModuleNotFoundError:
-    pass
 
 
 def read_themes_configuration(file):
@@ -13,10 +9,9 @@ def read_themes_configuration(file):
             except Exception as e:
                 print(f'failed, {e}')
                 return -1
-            print(f'{data["runtime"]}')
-            return data['light_theme'] if data['runtime']['current_theme'] == 'light_theme' else data['dark_theme']
-    except FileNotFoundError:
-        return -1  # Couldn't read file
+            return data['dark_theme'] if data['runtime']['current_theme'] == 'light_theme' else data['light_theme']
+    except Exception as e:
+        return e
 
 
 def read_current_theme(file):
@@ -28,8 +23,8 @@ def read_current_theme(file):
                 print(f'failed, {e}')
                 return -1
             return data['runtime']['current_theme']
-    except FileNotFoundError:
-        return -1
+    except Exception as e:
+        return e
 
 
 def write_current_theme(file, theme):
@@ -39,19 +34,16 @@ def write_current_theme(file, theme):
         theme = 'dark_theme'
     else:
         return -1
-    print(theme)
 
     try:
         with open(file, 'r') as configfile:
             data = toml.load(configfile)
             data['runtime']['current_theme'] = theme
-            print('Success!')
-    except FileNotFoundError:
-        return -1  # Couldn't read file
+    except Exception as e:
+        return e
 
     try:
         with open(file, 'w') as configfile:
-            print(data)
             toml.dump(data, configfile)
-    except FileNotFoundError:
-        return -2  # Couldn't write to file
+    except Exception as e:
+        return e
