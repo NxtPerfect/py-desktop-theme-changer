@@ -1,6 +1,7 @@
 import config
 import backup
 import change
+import windowmanager
 
 '''Config in a file
 read wallpaper-dark
@@ -33,6 +34,8 @@ def debug():
     # except:
     #     print('Couldn\'t remove backup')
     #     exit()
+
+    windowmanager.read_window_manager()
 
     theme = 'light'
     try:
