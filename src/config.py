@@ -10,8 +10,8 @@ def read_themes_configuration(file):
                 print(f'failed, {e}')
                 return -1
             return data['dark_theme'] if data['runtime']['current_theme'] == 'light_theme' else data['light_theme']
-    except Exception as e:
-        return e
+    except FileNotFoundError or PermissionError:
+        return -1
 
 
 def read_current_theme(file):
@@ -21,10 +21,10 @@ def read_current_theme(file):
                 data = toml.load(configfile)
             except Exception as e:
                 print(f'failed, {e}')
-                return -1
+                return -2
             return data['runtime']['current_theme']
-    except Exception as e:
-        return e
+    except FileNotFoundError or PermissionError:
+        return -1
 
 
 def write_current_theme(file, theme):
@@ -39,11 +39,11 @@ def write_current_theme(file, theme):
         with open(file, 'r') as configfile:
             data = toml.load(configfile)
             data['runtime']['current_theme'] = theme
-    except Exception as e:
-        return e
+    except FileNotFoundError or PermissionError:
+        return -1
 
     try:
         with open(file, 'w') as configfile:
             toml.dump(data, configfile)
-    except Exception as e:
-        return e
+    except FileNotFoundError or PermissionError:
+        return -1

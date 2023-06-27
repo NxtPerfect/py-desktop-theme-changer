@@ -31,4 +31,3 @@ def reset_display(window_manager):
         os.system(command)
     except Exception as e:
         return e
-    return 0
