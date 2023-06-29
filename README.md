@@ -10,6 +10,13 @@ Simply run ```python main.py``` and if your config.toml file is correctly config
 - qt5
 - python
 - python toml
+Install xsettingsd with your distro's package manager
+
+Fedora
+```sudo dnf install xsettingsd```
+
+Install toml for python
+```pip install toml```
 
 ### Why?
 I wanted to create a script that would change my themes with a press of a button on my bspwm, that i could then run from polybar.
