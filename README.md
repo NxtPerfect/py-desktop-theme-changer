@@ -4,6 +4,11 @@
 ### How does it work?
 Simply run ```python main.py``` and if your config.toml file is correctly configured, your themes should change to ones in that file, and restart your window manager display.
 
+### Dependencies
+- xsettingsd
+- gtk3/gtk4
+- qt5
+
 ### Why?
 I wanted to create a script that would change my themes with a press of a button on my bspwm, that i could then run from polybar.
 
