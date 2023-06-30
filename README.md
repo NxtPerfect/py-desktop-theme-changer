@@ -4,6 +4,12 @@
 ### How does it work?
 Simply run ```python main.py``` and if your config.toml file is correctly configured, your themes should change to ones in that file, and restart your window manager display.
 
+### Supported WM
+- bspwm
+- i3
+- dwm
+- xmonad
+
 ### Dependencies
 - xsettingsd
 - gtk3/gtk4
