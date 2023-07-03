@@ -15,13 +15,16 @@ Your config.toml file should be inside your polybar folder ~/.config/polybar/con
 ### How to install
 
 ```
+git clone https://github.com/NxtPerfect/py-desktop-theme-changer
 cd py-desktop-theme-changer
 pip install -r requirements.txt
-sudo your-package-manager install-command xsettingsd
+sudo your-package-manager install-command xsettingsd feh
 mv ./* ~/.config/polybar/theme-changer
 ```
-You have to install xsettingsd, which depends on what distribution you're running you have to find appropriate package on your own, for arch linux and fedora, it's xsettingsd
-now all you need to do is add new module/script into your polybar like in section [How does it work?](#how-does-it-work)
+
+You have to install xsettingsd, which depends on what distribution you're running you have to find appropriate package on your own, for arch linux and fedora, it's xsettingsd, as well as feh, to change wallpaper
+now all you need to do is add new module/script into your polybar like in section [How does it work?](#how-does-it-work).
+Remember to change your example.toml file to config.toml, as well as put valid cursor, icon and themes, as well as wallpaper
 
 ### Supported WM
 - bspwm
