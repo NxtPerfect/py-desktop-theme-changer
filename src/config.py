@@ -28,12 +28,13 @@ def read_current_theme(file):
 
 
 def write_current_theme(file, theme):
-    if theme == 'dark_theme':
-        theme = 'light_theme'
-    elif theme == 'light_theme':
-        theme = 'dark_theme'
-    else:
-        return -1
+    match theme:
+        case 'dark_theme':
+            theme = 'light_theme'
+        case 'light_theme':
+            theme = 'dark_theme'
+        case _:
+            return -1
 
     try:
         with open(file, 'r') as configfile:

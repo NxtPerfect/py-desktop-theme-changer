@@ -1,0 +1,16 @@
+[runtime]
+current_theme = "dark_theme"
+
+[light_theme]
+wallpaper = "/path/to/wallpaper"
+theme-gtk = "gtk theme name"
+theme-qt = "qt theme name"
+pointer = "pointer name"
+icons = "icons name"
+
+[dark_theme]
+wallpaper = "/path/to/wallpaper"
+theme-gtk = "gtk theme name"
+theme-qt = "qt theme name"
+pointer = "pointer name"
+icons = "icons name"
