@@ -17,8 +17,10 @@ Your config.toml file should be inside your polybar folder ~/.config/polybar/con
 ```
 cd py-desktop-theme-changer
 pip install -r requirements.txt
+sudo your-package-manager install-command xsettingsd
 mv ./* ~/.config/polybar/theme-changer
 ```
+You have to install xsettingsd, which depends on what distribution you're running you have to find appropriate package on your own, for arch linux and fedora, it's xsettingsd
 now all you need to do is add new module/script into your polybar like in section [How does it work?](#how-does-it-work)
 
 ### Supported WM
