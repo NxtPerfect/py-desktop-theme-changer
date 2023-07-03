@@ -2,8 +2,8 @@
 ## This script is made to automate changing themes to one button for window manager Linux users
 
 ### How does it work?
-To your polybar config, add new module/script, with ``label = %output%
-exec = /usr/bin/python /path/to/startup.py
+To your polybar config, add new module/script, with ``label = %output% \\
+exec = /usr/bin/python /path/to/startup.py \\
 click-left = /usr/bin/python /path/to/main.py``
 Your config.toml file should be inside your polybar folder ~/.config/polybar/config.toml, If config file is correctly configured, your themes should change to ones in that file, and restart your window manager display.
 
