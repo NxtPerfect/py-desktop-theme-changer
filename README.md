@@ -4,7 +4,7 @@
 ### How does it work?
 To your polybar config, add new module/script, with
 
-```python:
+```
 label = %output%
 exec = /usr/bin/python /path/to/startup.py
 click-left = /usr/bin/python /path/to/main.py
@@ -13,6 +13,13 @@ click-left = /usr/bin/python /path/to/main.py
 Your config.toml file should be inside your polybar folder ~/.config/polybar/config.toml, If config file is correctly configured, your themes should change to ones in that file, and restart your window manager display.
 
 ### How to install
+
+```
+cd py-desktop-theme-changer
+pip install -r requirements.txt
+mv ./* ~/.config/polybar/theme-changer
+```
+now all you need to do is add new module/script into your polybar like in section [How does it work?](#how-does-it-work)
 
 ### Supported WM
 - bspwm
