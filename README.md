@@ -2,7 +2,8 @@
 ## This script is made to automate changing themes to one button for window manager Linux users
 
 ### How does it work?
-To your polybar config, add new module/script, with ```python:
+To your polybar config, add new module/script, with
+```python:
 label = %output%
 exec = /usr/bin/python /path/to/startup.py
 click-left = /usr/bin/python /path/to/main.py
