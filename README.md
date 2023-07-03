@@ -22,7 +22,7 @@ sudo your-package-manager install-command xsettingsd feh
 mv ./* ~/.config/polybar/theme-changer
 ```
 
-You have to install xsettingsd, which depends on what distribution you're running you have to find appropriate package on your own, for arch linux and fedora, it's xsettingsd, as well as feh, to change wallpaper
+You have to install xsettingsd and feh, which depends on what distribution you're running you have to find appropriate package on your own, for arch linux and fedora, it's xsettingsd, feh
 now all you need to do is add new module/script into your polybar like in section [How does it work?](#how-does-it-work).
 Remember to change your example.toml file to config.toml, as well as put valid cursor, icon and themes, as well as wallpaper
 
@@ -39,7 +39,6 @@ Remember to change your example.toml file to config.toml, as well as put valid c
 - qt5
 - python
 - python toml
-Install xsettingsd with your distro's package manager
 
 Fedora
 ```sudo dnf install xsettingsd```
