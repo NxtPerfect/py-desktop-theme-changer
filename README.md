@@ -34,6 +34,7 @@ Remember to change your example.toml file to config.toml, as well as put valid c
 
 ### Dependencies
 - xsettingsd
+- feh
 - gtk3/gtk4
 - qt5
 - python
