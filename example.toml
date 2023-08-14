@@ -1,0 +1,19 @@
+[runtime]
+current_theme = "dark_theme" # used to determine what theme is currently on your machine
+modules = ["wallpaper", "pointer" , "icons", "gtk", "qt"] # what should change, options: wallpaper, pointer, icons, gtk, qt, polybar
+
+[light_theme]
+wallpaper = "/path/to/wallpaper"
+pointer = "pointer name"
+icons = "icons name"
+theme-gtk = "gtk theme name"
+theme-qt = "qt theme name"
+polybar-colors = "/absolute/path/to/polybar/colors-light.ini"
+
+[dark_theme]
+wallpaper = "/path/to/wallpaper"
+pointer = "pointer name"
+icons = "icons name"
+theme-gtk = "gtk theme name"
+theme-qt = "qt theme name"
+polybar-colors = "/absolute/path/to/polybar/colors-dark.ini"

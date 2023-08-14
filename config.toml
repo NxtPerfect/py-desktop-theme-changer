@@ -1,0 +1,19 @@
+[runtime]
+current_theme = "dark_theme"
+modules = [ "wallpaper", "pointer", "icons", "gtk", "qt", "polybar"]
+
+[light_theme]
+wallpaper = "~/Pictures/PFP45.jpg"
+pointer = "Bibata-Modern-Ice"
+icons = "Adwaita"
+theme-gtk = "Adwaita"
+theme-qt = "Adwaita"
+polybar-colors = "/home/nxtperfect/.config/polybar/colors-light.ini"
+
+[dark_theme]
+wallpaper = "~/Pictures/Tokyo-Ghoul-Wallpaper-For-PC.jpg"
+pointer = "Bibata-Modern-Classic"
+icons = "BigSur-black-dark"
+theme-gtk = "Dracula-standard-buttons"
+theme-qt = "Adwaita-Dark"
+polybar-colors = "/home/nxtperfect/.config/polybar/colors-dark.ini"
