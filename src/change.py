@@ -86,6 +86,13 @@ def change_icons(icons):
     except PermissionError:
         return -2
 
+    try:
+        command = f'gsettings set org.gnome.desktop.interface icon-theme \'{icons}\''
+        os.system(command)
+        return 0
+    except Exception as e:
+        return e
+
 
 def change_theme_gtk(theme_gtk):
     try:
@@ -101,6 +108,18 @@ def change_theme_gtk(theme_gtk):
             f.write(data)
     except PermissionError:
         return -2
+
+    try:
+        command = f'gsettings set org.gnome.desktop.interface gtk-theme \'{theme_gtk}\''
+        os.system(command)
+        try:
+            command = f'gsettings set org.gnome.desktop.wm.preferences theme \'{theme_gtk}\''
+            os.system(command)
+            return 0
+        except Exception as e:
+            return e
+    except Exception as e:
+        return e
 
 
 def change_theme_qt(theme_qt):

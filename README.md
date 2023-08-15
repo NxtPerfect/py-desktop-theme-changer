@@ -29,6 +29,17 @@ You have to install xsettingsd and feh, which depends on what distribution you'r
 now all you need to do is add new module/script into your polybar like in section [How does it work?](#how-does-it-work).
 **Remember to change your example.toml file name to config.toml and change file paths, as well as put valid cursor, icon, theme and wallpaper.**
 
+### Modularity
+
+Inside `config.toml` there's a section `[runtime]`, inside of which you can find `modules` field, this determines what the script will change, available options:
+
+- wallpaper - changes wallpaper with feh
+- pointer - changes pointer
+- icons - changes icons
+- gtk - changes gtk theme
+- qt - changes qt theme
+- polybar - changes polybar color scheme (changes colors.ini, you should `include-file='./colors.ini'` inside of your polybar config, and use these colors for your bar for it to work)
+
 ### Supported WM
 
 - bspwm
